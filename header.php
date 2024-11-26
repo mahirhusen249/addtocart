@@ -25,9 +25,13 @@
             <a class="navbar-brand pb-2"> </a>
             <div class="d-flex">
                 <a href="index.php" class="text-danger text-decoration-none pe-2"><i class="fa-solid fa-house"></i>Home |</a>
+                <a href="logout.php" class="text-danger text-decoration-none pe-2"><i class="bi bi-box-arrow-right"></i>Logout |</a>
+
                 <a href="view.php" class="text-danger text-decoration-none pe-2"><i class="fa-solid fa-cart-shopping"></i></i>cart(<?php echo $count ?>) |</a>
-                <span class="text-danger pe-2">
+                <span class="text-danger pe-2"> 
+                    
                     <i class="fa-solid fa-user"></i>hello, 
+                    
                     <?php  
                     
                     ?>

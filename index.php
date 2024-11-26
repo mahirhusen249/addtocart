@@ -1,7 +1,14 @@
 <?php
 session_start();
+if(!isset($_SESSION['email'])){    
+	header('location:login.php');   
+}
 include 'header.php';
-include 'conn.php';    
+include 'conn.php';     
+
+// $order_id = 'AK'.rand(100000,999999);
+
+// print_r($order_id);exit;
 ?>
 
 <form action="" method="POST" enctype="multipart/form-data"> 
@@ -40,8 +47,7 @@ if(isset($_POST['submit'])){
 }        
 
 
-// Fetch all products from cart_tbl
-$sql = "SELECT * FROM cart_tbl";   
+ $sql = "SELECT * FROM cart_tbl";   
 $result = mysqli_query($conn, $sql);  
 
 ?>
@@ -86,30 +92,6 @@ $result = mysqli_query($conn, $sql);
 }
 
       
-    // Handle Add to Cart
-    if (isset($_POST['addtocart'])) {
-        $product_id = $_POST['product_id'];
-
-         $sql = "SELECT product_name,product_price,product_image FROM cart_tbl WHERE id = '$product_id'";
-        $result = mysqli_query($conn, $sql);
-        $product = mysqli_fetch_assoc($result);
-
-
-
-        $add_name = $product['product_name'];
-        $add_price = $product['product_price'];
-        $add_image = $product['product_image'];
-
-         $sql_insert = "INSERT INTO add_tbl (add_name, add_price, add_image) 
-                       VALUES ('$add_name', '$add_price', '$add_image')";
-        $result_insert = mysqli_query($conn, $sql_insert);
-
-        if ($result_insert) {
-            echo "Product added to cart and inserted into the database successfully.";
-        } else {
-            echo "Error: " . mysqli_error($conn);
-        }
-    }
 
 
 
