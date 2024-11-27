@@ -17,7 +17,6 @@ $sql = "INSERT INTO `user_tbl` (`name`, `email`, `password`) VALUES ('$name','$e
   $result=mysqli_query($conn,$sql);     
   if($result){   
     echo"insert successfully";      
-    $_SESSION['user_id'] = $user_id;
 
     header("location:login.php");
   }else{   

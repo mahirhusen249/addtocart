@@ -21,7 +21,7 @@ include 'conn.php';
                 <button type="submit" class="btn btn-primary mt-3" name="submit">Submit</button>
             </div>
         </div>
-    </div>
+    </div>   
 </form> 
 
 <?php
@@ -95,7 +95,9 @@ $result = mysqli_query($conn, $sql);
 
 
 
-?>
+?>       
+
+
     </div>
 </tbody>
 </table> 

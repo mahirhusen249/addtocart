@@ -46,12 +46,16 @@ include 'conn.php';
         } else {
             echo "Error: " . mysqli_error($conn);
         }
-
+    
+                // Clear cart after checkout
+                $_SESSION['cart'] = array();
+            
         // Clear cart after checkout (optional)
         // session_unset();
         // session_destroy();
     }
-}
+}  
+
 
 if (isset($_POST['remove'])) {
     $product_name_to_remove = $_POST['item']; 
