@@ -43,7 +43,7 @@ $sql = "INSERT INTO `user_tbl` (`name`, `email`, `password`) VALUES ('$name','$e
 </head>
 <body>
     <div class="wrapper">
-        <div class="title">Register Form</div>
+        <div class="title">Signup </div>
         <form action="#" method="POST" id="registrationForm"> 
             <div class="field">
                 <input type="text" name="name" id="name" required>
@@ -101,23 +101,23 @@ $sql = "INSERT INTO `user_tbl` (`name`, `email`, `password`) VALUES ('$name','$e
         }
 
         // Mobile number validation
-        const mobilenumber = document.getElementById('mobilenumber').value.trim();
-        if (mobilenumber === '') {
-            document.getElementById('mobileError').innerText = 'Please enter your mobile number.';
-            isValid = false;
-        } else if (mobilenumber.length !== 10 || !/^\d+$/.test(mobilenumber)) { 
-            document.getElementById('mobileError').innerText = 'Mobile number must be exactly 10 digits.';
-            isValid = false;
-        }
+        // const mobilenumber = document.getElementById('mobilenumber').value.trim();
+        // if (mobilenumber === '') {
+        //     document.getElementById('mobileError').innerText = 'Please enter your mobile number.';
+        //     isValid = false;
+        // } else if (mobilenumber.length !== 10 || !/^\d+$/.test(mobilenumber)) { 
+        //     document.getElementById('mobileError').innerText = 'Mobile number must be exactly 10 digits.';
+        //     isValid = false;
+        // }
 
-        function valid_numbers(e)
-{
-        var key=e.which || e.KeyCode;
-        if  ( key >=48 && key <= 57)
-         // to check whether pressed key is number or not 
-                return true; 
-         else return false;
-}
+//         function valid_numbers(e)
+// {
+//         var key=e.which || e.KeyCode;
+//         if  ( key >=48 && key <= 57)
+//          // to check whether pressed key is number or not 
+//                 return true; 
+//          else return false;
+// }
 
         // Email validation
         const email = document.getElementById('email').value.trim();
@@ -157,8 +157,6 @@ $sql = "INSERT INTO `user_tbl` (`name`, `email`, `password`) VALUES ('$name','$e
     }
     </script>
 </body>  
-
-        // });
-    // });
+ 
 </script>
 </html>

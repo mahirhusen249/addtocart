@@ -18,13 +18,11 @@ include 'conn.php';
             $total_price += $product['product_price'];
         }
 
-        // Insert order into order_tbl
-        $sql_total_price = "INSERT INTO order_tbl (total_amount, user_id, order_id) VALUES ('$total_price', '$user_id', '$ord_id')";
+         $sql_total_price = "INSERT INTO order_tbl (total_amount, user_id, order_id) VALUES ('$total_price', '$user_id', '$ord_id')";
         $result_total_price = mysqli_query($conn, $sql_total_price);
         $order_id = mysqli_insert_id($conn);
 
-        // Insert each product into add_tbl
-        foreach ($_SESSION['cart'] as $product) {
+         foreach ($_SESSION['cart'] as $product) {
             $add_name = $product['product_name'];
             $add_price = $product['product_price'];
             $add_image = $product['product_image'];
@@ -47,8 +45,7 @@ include 'conn.php';
             echo "Error: " . mysqli_error($conn);
         }
     
-                // Clear cart after checkout
-                $_SESSION['cart'] = array();
+                 $_SESSION['cart'] = [];
             
         // Clear cart after checkout (optional)
         // session_unset();
