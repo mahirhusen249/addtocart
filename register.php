@@ -140,11 +140,11 @@ $sql = "INSERT INTO `user_tbl` (`name`, `email`, `password`) VALUES ('$name','$e
         }
 
         // Checkbox validation
-        const checkbox = document.getElementById('remember-me');
-        if (!checkbox.checked) {
-            alert('You must agree to the terms and conditions.');
-            isValid = false;
-        }
+        // const checkbox = document.getElementById('remember-me');
+        // if (!checkbox.checked) {
+        //     alert('You must agree to the terms and conditions.');
+        //     isValid = false;
+        // }
 
         if (!isValid) {
             event.preventDefault(); // Stop form submission

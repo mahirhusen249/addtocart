@@ -1,5 +1,8 @@
 <?php
-session_start();
+session_start(); 
+if(!isset($_SESSION['email'])){    
+	header('location:login.php');   
+}
 include 'header.php';     
 include 'conn.php';     
 
@@ -28,14 +31,16 @@ if (isset($_SESSION['user_id'])) {
                     <th>Total Amount</th>
                     <th>Order Date</th> 
                     <th>Quantity</th>   
-                    <th>view your cart</th>
+                    <th>view your cart</th>   
+                    <th>Invoice</th>  
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
                 <?php    
                 $total_amount = 0; 
                 if (mysqli_num_rows($result) > 0) {
-                    while ($row = mysqli_fetch_assoc($result)) {
+                while ($row = mysqli_fetch_assoc($result)) {
                      $quantity_sql = "SELECT * FROM `add_tbl` WHERE order_id = ".$row['id'];  
                     //  print_r($row['id']);exit;
                          
@@ -51,15 +56,26 @@ if (isset($_SESSION['user_id'])) {
                             <td><?php echo $row['order_date']; ?></td>  
                             <td><?php echo $quantity_row; ?></td> 
                             <td>    
-                                <form action=""method="POST">
+ <form action=""method="POST">
     <div class="col-lg-1">
         <div class="form-group" style="margin-left:100%">
-            <a href="qunt.php?order_id=<?php echo $row['id'] ?>" class="btn btn-primary mt-3"name="view">View Cart</a>
+            <a href="qunt.php?order_id=<?php echo $row['id']; ?>" class="btn btn-primary mt-3"name="view">ViewCart</a> 
+
         </div>
-    </div>
-    </form>
+    </div>  
+    <!-- <a href="qunt.php?order_id" class="btn btn-primary mt-1"name="view">Invoice</a> -->
+
+    </form> 
+
+</td>  
+<td>    
+    <a href="invoice.php?order_id=<?php echo $row['id']; ?>" class="btn btn-warning mt-3"name=" ">Invoice</a>
+    
+</td>   
+<td>
+<a href="mystore.php?delete=<?php echo $row['id']; ?>" onclick="return confirm('Are you sure you want to delete this record?');" class="btn btn-danger">Delete</a> 
 </td>
-                         </tr>
+</tr>
                         <?php
                     }
                 } else {
@@ -74,5 +90,16 @@ if (isset($_SESSION['user_id'])) {
     }
 } else {
     echo "<p>You need to be logged in to view your orders.</p>";
+}   
+if(isset($_GET['delete'])){   
+    $id=$_GET['delete']; 
+    $sql = "DELETE FROM order_tbl WHERE id = $id"; 
+    $result=mysqli_query($conn,$sql);
+    echo "<script>window.location.href = ' mystore.php';</script>";
+ 
+
 }
-?>
+
+
+
+ ?>
